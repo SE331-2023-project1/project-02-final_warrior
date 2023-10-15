@@ -1,9 +1,12 @@
 package se331.proj.rest.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 import se331.proj.rest.entity.Student;
 
@@ -36,9 +39,30 @@ public class StudentController {
             page = page == null?1:page;
             Integer firstIndex = (page-1) * perPage;
             List<Student> output = new ArrayList<>();
-            for (int i = firstIndex; i < firstIndex + perPage; i++) {
+            try {
+                for (int i = firstIndex; i < firstIndex + perPage; i++) {
                 output.add(studentList.get(i));
+                }
+                return ResponseEntity.ok(output);
+            } catch (IndexOutOfBoundsException ex) {
+                return ResponseEntity.ok(output);
             }
-            return ResponseEntity.ok(output);
+    
+    }
+
+    @GetMapping("students/{id}")
+    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
+        Student output = null;
+        for ( Student student : studentList ) {
+            if (student.getId().equals(id)) {
+                output = student;
+                break;
+            }
         }
+        if (output != null) {
+            return ResponseEntity.ok(output);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
 }
