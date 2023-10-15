@@ -1,6 +1,11 @@
 package se331.proj.rest.controller;
 
+import org.apache.catalina.connector.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import se331.proj.rest.entity.Advisor;
 
 import jakarta.annotation.PostConstruct;
@@ -26,5 +31,16 @@ public class AdvisorController {
         .build());
     }
 
-    
+    @GetMapping("advisors")
+    public ResponseEntity<?> getAdvisorLists(@RequestParam(value = "_limit", required = false) Integer perPage,
+        @RequestParam(value = "_page", required = false) Integer page) {
+            perPage = perPage == null?advisorList.size():perPage;
+            page = page == null?1:page;
+            Integer firstIndex = (page-1) * perPage;
+            List<Advisor> output = new ArrayList<>();
+            for (int i = firstIndex; i < firstIndex + perPage; i++) {
+                output.add(advisorList.get(i));
+            }
+            return ResponseEntity.ok(output);
+        }
 }
