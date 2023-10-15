@@ -1,12 +1,15 @@
 package se331.proj.rest.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 import se331.proj.rest.entity.Advisor;
-
+import se331.proj.rest.entity.Advisor;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +28,7 @@ public class AdvisorController {
         .surname("Doe")
         .dept("CAMT")
         .position("Lecturer")
-        .studentId(new ArrayList<Integer>(Arrays.asList(642115024)))
+        .AdvisorId(new ArrayList<Integer>(Arrays.asList(642115024)))
         .imageLink("https://i.redd.it/qjfd7hi1w8ub1.jpg")
         .build());
     }
@@ -41,5 +44,22 @@ public class AdvisorController {
                 output.add(advisorList.get(i));
             }
             return ResponseEntity.ok(output);
+    }
+
+    
+    @GetMapping("advisors/{id}")
+    public ResponseEntity<?> getAdvisor(@PathVariable("id") Integer id) {
+        Advisor output = null;
+        for ( Advisor advisor : advisorList ) {
+            if (advisor.getId().equals(id)) {
+                output = advisor;
+                break;
+            }
         }
+        if (output != null) {
+            return ResponseEntity.ok(output);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
 }
