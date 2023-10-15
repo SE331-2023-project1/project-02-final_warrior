@@ -1,5 +1,7 @@
 package se331.proj.rest.entity;
 
+import java.util.ArrayList;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,5 +15,5 @@ public class Advisor {
     String imageLink;
     String dept;
     String position;
-    Integer[] studentId;
+    ArrayList<Integer> studentId;
 }
