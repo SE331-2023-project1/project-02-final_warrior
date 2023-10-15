@@ -1,5 +1,6 @@
 package se331.proj.rest.controller;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,13 +40,17 @@ public class StudentController {
             page = page == null?1:page;
             Integer firstIndex = (page-1) * perPage;
             List<Student> output = new ArrayList<>();
+
+            HttpHeaders responseHeader = new HttpHeaders();
+            responseHeader.set("x-total-count", String.valueOf(studentList.size()));
+
             try {
                 for (int i = firstIndex; i < firstIndex + perPage; i++) {
                 output.add(studentList.get(i));
                 }
-                return ResponseEntity.ok(output);
+                return new ResponseEntity<>(output, responseHeader, HttpStatus.OK);
             } catch (IndexOutOfBoundsException ex) {
-                return ResponseEntity.ok(output);
+                return new ResponseEntity<>(output, responseHeader, HttpStatus.OK);
             }
     
     }
