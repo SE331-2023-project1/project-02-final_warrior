@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class Advisor {
-    Long id;
+    Integer id;
     String name;
     String surname;
     String imageLink;
