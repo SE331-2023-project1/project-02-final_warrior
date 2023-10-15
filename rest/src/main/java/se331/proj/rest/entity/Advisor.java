@@ -9,7 +9,6 @@ import lombok.Data;
 @Builder
 public class Advisor {
     Long id;
-    Integer advisorId;
     String name;
     String surname;
     String imageLink;
