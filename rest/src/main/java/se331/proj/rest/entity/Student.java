@@ -6,8 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class Student {
-    Long id;
-    Integer studentId;
+    Integer id;
     String name;
     String surname;
     String imageLink;
