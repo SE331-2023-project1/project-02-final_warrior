@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import se331.proj.rest.entity.Advisor;
-import se331.proj.rest.entity.Advisor;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +27,7 @@ public class AdvisorController {
         .surname("Doe")
         .dept("CAMT")
         .position("Lecturer")
-        .AdvisorId(new ArrayList<Integer>(Arrays.asList(642115024)))
+        .studentId(new ArrayList<Integer>(Arrays.asList(642115024)))
         .imageLink("https://i.redd.it/qjfd7hi1w8ub1.jpg")
         .build());
     }
