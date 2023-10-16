@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PostConstruct;
 import se331.proj.rest.entity.Advisor;
 
 @Repository
+@Profile("db")
 public class AdvisorDaoImpl implements AdvisorDao{
     List<Advisor> advisorList;
     

@@ -3,11 +3,13 @@ package se331.proj.rest.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import jakarta.annotation.PostConstruct;
 import se331.proj.rest.entity.Student;
 
 @Repository
+@Profile("db")
 public class StudentDaoImpl implements StudentDao {
     List<Student> studentList;
     
@@ -35,7 +37,6 @@ public class StudentDaoImpl implements StudentDao {
         page = page == null?1:page;
         int firstIndex = (page - 1) * perPage;
         return studentList.subList(firstIndex, firstIndex+perPage);
-    
     }
 
     @Override
