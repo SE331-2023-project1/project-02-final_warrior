@@ -6,6 +6,6 @@ import se331.proj.rest.entity.Student;
 
 public interface StudentDao {
     Integer getStudentSize();
-    List<Student> getStudents(Integer pageSize, Integer page);
+    List<Student> getStudents(Integer perPage, Integer page);
     Student getStudent(Integer id);
 }
