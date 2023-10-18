@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import jakarta.annotation.PostConstruct;
 import se331.proj.rest.entity.Student;
@@ -32,11 +35,11 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> getStudents(Integer perPage, Integer page) {
+    public Page<Student> getStudents(Integer perPage, Integer page) {
         perPage = perPage == null?studentList.size():perPage;
         page = page == null?1:page;
         int firstIndex = (page - 1) * perPage;
-        return studentList.subList(firstIndex, firstIndex+perPage);
+        return new PageImpl<>(studentList.subList(firstIndex, firstIndex+perPage), PageRequest.of(page, perPage), studentList.size());
     }
 
     @Override
@@ -48,5 +51,12 @@ public class StudentDaoImpl implements StudentDao {
                 .getId().equals(id))
             .findFirst()
             .orElse(null);
+    }
+    
+    @Override
+    public Student save(Student student) {
+        student.setId(studentList.get(studentList.size()-1).getId()+1);
+        studentList.add(student);
+        return student;
     }
 }

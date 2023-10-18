@@ -1,8 +1,8 @@
 package se331.proj.rest.dao;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,17 +21,18 @@ public class AdvisorDaoDbImpl implements AdvisorDao{
     }
 
     @Override
-    public List<Advisor> getAdvisors(Integer perPage, Integer page) {
-        List<Advisor> advisors = advisorRepository.findAll();
-        perPage = perPage == null?advisors.size():perPage;
-        page = page == null?1:page;
-        int firstIndex = (page - 1) * perPage;
-        List<Advisor> output = advisors.subList(firstIndex, firstIndex+perPage);
-        return output;
+    public Page<Advisor> getAdvisors(Integer perPage, Integer page) {
+        return advisorRepository.findAll(PageRequest.of(page - 1, perPage));
     }
 
     @Override
     public Advisor getAdvisor(Integer id) {
         return advisorRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Advisor save(Advisor advisor) {
+        return advisorRepository.save(advisor);
+    }
+
 }

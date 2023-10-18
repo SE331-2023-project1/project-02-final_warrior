@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PostConstruct;
@@ -35,11 +38,11 @@ public class AdvisorDaoImpl implements AdvisorDao{
     }
 
     @Override
-    public List<Advisor> getAdvisors(Integer perPage, Integer page) {
+    public Page<Advisor> getAdvisors(Integer perPage, Integer page) {
         perPage = perPage == null?advisorList.size():perPage;
         page = page == null?1:page;
         int firstIndex = (page - 1) * perPage;
-        return advisorList.subList(firstIndex, firstIndex+perPage);
+        return new PageImpl<>(advisorList.subList(firstIndex, firstIndex+perPage), PageRequest.of(page, perPage), advisorList.size());
     }
 
     @Override
@@ -52,4 +55,12 @@ public class AdvisorDaoImpl implements AdvisorDao{
             .findFirst()
             .orElse(null);
     }
+
+    @Override
+    public Advisor save(Advisor advisor) {
+        advisor.setId(advisorList.get(advisorList.size()-1).getId()+1);
+        advisorList.add(advisor);
+        return advisor;
+    }
+    
 }

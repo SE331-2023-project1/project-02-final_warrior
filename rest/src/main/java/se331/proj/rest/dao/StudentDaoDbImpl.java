@@ -1,8 +1,8 @@
 package se331.proj.rest.dao;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,17 +21,18 @@ public class StudentDaoDbImpl implements StudentDao{
     }
 
     @Override
-    public List<Student> getStudents(Integer perPage, Integer page) {
-        List<Student> students = studentRepository.findAll();
-        perPage = perPage == null?students.size():perPage;
-        page = page == null?1:page;
-        int firstIndex = (page - 1) * perPage;
-        List<Student> output = students.subList(firstIndex, firstIndex+perPage);
-        return output;
+    public Page<Student> getStudents(Integer perPage, Integer page) {
+        return studentRepository.findAll(PageRequest.of(page - 1, perPage));
     }
 
     @Override
     public Student getStudent(Integer id) {
         return studentRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Student save(Student student) {
+        return studentRepository.save(student);
+    }
+
 }
