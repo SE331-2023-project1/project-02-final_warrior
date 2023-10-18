@@ -1,7 +1,6 @@
 package se331.proj.rest.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.annotation.Profile;
@@ -27,7 +26,6 @@ public class AdvisorDaoImpl implements AdvisorDao{
         .surname("Doe")
         .dept("CAMT")
         .position("Lecturer")
-        .studentId(new ArrayList<Integer>(Arrays.asList(642115024)))
         .imageLink("https://i.redd.it/qjfd7hi1w8ub1.jpg")
         .build());
     }

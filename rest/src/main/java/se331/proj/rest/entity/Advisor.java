@@ -27,5 +27,5 @@ public class Advisor {
     String imageLink;
     String dept;
     String position;
-    List<Integer> studentId;
+    List<Student> students;
 }
