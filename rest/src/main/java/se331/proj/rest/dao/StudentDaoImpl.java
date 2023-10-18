@@ -9,7 +9,7 @@ import jakarta.annotation.PostConstruct;
 import se331.proj.rest.entity.Student;
 
 @Repository
-@Profile("db")
+@Profile("manual")
 public class StudentDaoImpl implements StudentDao {
     List<Student> studentList;
     

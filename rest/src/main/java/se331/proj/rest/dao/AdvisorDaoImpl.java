@@ -11,7 +11,7 @@ import jakarta.annotation.PostConstruct;
 import se331.proj.rest.entity.Advisor;
 
 @Repository
-@Profile("db")
+@Profile("manual")
 public class AdvisorDaoImpl implements AdvisorDao{
     List<Advisor> advisorList;
     
