@@ -1,7 +1,6 @@
 package se331.proj.rest.service;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public List<Student> getStudents(Integer perPage, Integer page) {
+    public Page<Student> getStudents(Integer perPage, Integer page) {
         return studentDao.getStudents(perPage, page);
     }
 
@@ -26,4 +25,10 @@ public class StudentServiceImpl implements StudentService{
     public Student getStudent(Integer id) {
         return studentDao.getStudent(id);
     }
+    
+    @Override
+    public Student save(Student student) {
+        return studentDao.save(student);
+    }
+
 }

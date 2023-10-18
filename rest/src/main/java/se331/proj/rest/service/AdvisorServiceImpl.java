@@ -1,7 +1,6 @@
 package se331.proj.rest.service;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -11,19 +10,25 @@ import se331.proj.rest.entity.Advisor;
 @Service
 @RequiredArgsConstructor
 public class AdvisorServiceImpl implements AdvisorService{
-    final AdvisorDao AdvisorDao;
+    final AdvisorDao advisorDao;
     @Override
     public Integer getAdvisorSize(){
-        return AdvisorDao.getAdvisorSize();
+        return advisorDao.getAdvisorSize();
     }
 
     @Override
-    public List<Advisor> getAdvisors(Integer perPage, Integer page) {
-        return AdvisorDao.getAdvisors(perPage, page);
+    public Page<Advisor> getAdvisors(Integer perPage, Integer page) {
+        return advisorDao.getAdvisors(perPage, page);
     }
 
     @Override
     public Advisor getAdvisor(Integer id) {
-        return AdvisorDao.getAdvisor(id);
+        return advisorDao.getAdvisor(id);
     }
+    
+    @Override
+    public Advisor save(Advisor advisor) {
+        return advisorDao.save(advisor);
+    }
+
 }
