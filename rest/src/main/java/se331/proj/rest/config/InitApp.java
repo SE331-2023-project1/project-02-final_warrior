@@ -1,6 +1,5 @@
 package se331.proj.rest.config;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -36,7 +35,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         .surname("Doe")
         .dept("CAMT")
         .position("Lecturer")
-        .studentId(new ArrayList<Integer>(Arrays.asList(642115024)))
+        .studentId(Arrays.asList(642115024))
         .imageLink("https://i.redd.it/qjfd7hi1w8ub1.jpg")
         .build());
     }

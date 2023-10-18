@@ -1,6 +1,6 @@
 package se331.proj.rest.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,5 +27,5 @@ public class Advisor {
     String imageLink;
     String dept;
     String position;
-    ArrayList<Integer> studentId;
+    List<Integer> studentId;
 }
