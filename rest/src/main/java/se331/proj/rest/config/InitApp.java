@@ -23,7 +23,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .name("Thaipat2")
             .surname("Sukhumpraisan2")
             .dept("CAMT2")
-            .advisorId(1234)
             .imageLink("https://i.redd.it/jn8p6oejm0ub1.jpg")
             .build());
 

@@ -24,7 +24,6 @@ public class StudentDaoImpl implements StudentDao {
         .name("Thaipat")
         .surname("Sukhumpraisan")
         .dept("CAMT")
-        .advisorId(1234)
         .imageLink("https://i.redd.it/jn8p6oejm0ub1.jpg")
         .build());
     }
