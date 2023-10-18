@@ -24,5 +24,5 @@ public class Student {
     String surname;
     String imageLink;
     String dept;
-    Integer advisorId;
+    Advisor advisor;
 }
