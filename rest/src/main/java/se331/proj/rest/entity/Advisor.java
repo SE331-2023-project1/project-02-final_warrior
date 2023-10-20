@@ -1,5 +1,6 @@
 package se331.proj.rest.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -23,11 +24,13 @@ public class Advisor {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Integer id;
+    Integer advisorId;
     String name;
     String surname;
     String imageLink;
     String dept;
     String position;
     @OneToMany
-    List<Student> students;
+    @Builder.Default
+    List<Student> students = new ArrayList<>();
 }

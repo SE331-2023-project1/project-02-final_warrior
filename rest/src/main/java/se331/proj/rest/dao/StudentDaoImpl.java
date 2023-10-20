@@ -20,7 +20,7 @@ public class StudentDaoImpl implements StudentDao {
     public void init() {
         studentList = new ArrayList<>();
         studentList.add(Student.builder()
-        .id(642115024)
+        .studentId(642115024)
         .name("Thaipat")
         .surname("Sukhumpraisan")
         .dept("CAMT")

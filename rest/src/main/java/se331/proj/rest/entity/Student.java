@@ -21,6 +21,7 @@ public class Student {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Integer id;
+    Integer studentId;
     String name;
     String surname;
     String imageLink;

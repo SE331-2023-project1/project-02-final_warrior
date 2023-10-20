@@ -21,7 +21,7 @@ public class AdvisorDaoImpl implements AdvisorDao{
     public void init() {
         advisorList = new ArrayList<>();
         advisorList.add(Advisor.builder()
-        .id(1234)
+        .advisorId(1234)
         .name("John")
         .surname("Doe")
         .dept("CAMT")
