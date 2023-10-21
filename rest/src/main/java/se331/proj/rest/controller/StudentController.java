@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import lombok.RequiredArgsConstructor;
 import se331.proj.rest.entity.Student;
 import se331.proj.rest.service.StudentService;
+import se331.proj.rest.util.LabMapper;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,14 +30,14 @@ public class StudentController {
             HttpHeaders responseHeader = new HttpHeaders();
 
             responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
-            return new ResponseEntity<>(pageOutput.getContent(), responseHeader, HttpStatus.OK);
+            return new ResponseEntity<>(LabMapper.INSTANCE.getStudentDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 
     @GetMapping("students/{id}")
     public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
         Student output = studentService.getStudent(id);
         if (output != null) {
-            return ResponseEntity.ok(output);
+            return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
@@ -45,6 +46,6 @@ public class StudentController {
     @PostMapping("/students")
     public ResponseEntity<?> addStudent(@RequestBody Student student) {
         Student output = studentService.save(student);
-        return ResponseEntity.ok(output);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
     }
 }

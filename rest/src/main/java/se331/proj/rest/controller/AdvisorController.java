@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import se331.proj.rest.entity.Advisor;
 import se331.proj.rest.service.AdvisorService;
+import se331.proj.rest.util.LabMapper;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -29,7 +30,7 @@ public class AdvisorController {
             HttpHeaders responseHeader = new HttpHeaders();
 
             responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
-            return new ResponseEntity<>(pageOutput.getContent(), responseHeader, HttpStatus.OK);
+            return new ResponseEntity<>(LabMapper.INSTANCE.getAdvisorDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 
     
@@ -37,7 +38,7 @@ public class AdvisorController {
     public ResponseEntity<?> getAdvisor(@PathVariable("id") Integer id) {
         Advisor output = advisorService.getAdvisor(id);
         if (output != null) {
-            return ResponseEntity.ok(output);
+            return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(output));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
@@ -46,6 +47,6 @@ public class AdvisorController {
     @PostMapping("/advisors")
     public ResponseEntity<?> addAdvisor(@RequestBody Advisor advisor) {
         Advisor output = advisorService.save(advisor);
-        return ResponseEntity.ok(output);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(output));
     }
 }
