@@ -1,8 +1,5 @@
 package se331.proj.rest.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +17,4 @@ public class StudentAdvisorDTO {
     String imageLink;
     String dept;
     String position;
-    @Builder.Default
-    List<Student> students = new ArrayList<>();
 }
