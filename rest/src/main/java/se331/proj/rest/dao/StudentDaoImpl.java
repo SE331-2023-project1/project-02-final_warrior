@@ -42,12 +42,12 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student getStudent(Integer id) {
+    public Student getStudent(Integer studentId) {
         return studentList
             .stream()
             .filter(student ->
                 student
-                .getId().equals(id))
+                .getStudentId().equals(studentId))
             .findFirst()
             .orElse(null);
     }

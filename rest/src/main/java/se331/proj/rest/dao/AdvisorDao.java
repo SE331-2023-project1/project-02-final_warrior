@@ -7,6 +7,6 @@ import se331.proj.rest.entity.Advisor;
 public interface AdvisorDao {
     Integer getAdvisorSize();
     Page<Advisor> getAdvisors(Integer pageSize, Integer page);
-    Advisor getAdvisor(Integer id);
+    Advisor getAdvisor(Integer advisorId);
     Advisor save(Advisor advisor);
 }

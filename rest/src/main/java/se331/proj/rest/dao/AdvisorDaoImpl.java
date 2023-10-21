@@ -44,12 +44,12 @@ public class AdvisorDaoImpl implements AdvisorDao{
     }
 
     @Override
-    public Advisor getAdvisor(Integer id) {
+    public Advisor getAdvisor(Integer advisorId) {
         return advisorList
             .stream()
             .filter(advisor ->
                 advisor
-                .getId().equals(id))
+                .getAdvisorId().equals(advisorId))
             .findFirst()
             .orElse(null);
     }
