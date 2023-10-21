@@ -1,5 +1,8 @@
 package se331.proj.rest.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +12,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDTO {
+public class StudentAdvisorDTO {
     Integer id;
-    Integer studentId;
+    Integer advisorId;
     String name;
     String surname;
     String imageLink;
     String dept;
-    StudentAdvisorDTO advisor;
+    String position;
+    @Builder.Default
+    List<Student> students = new ArrayList<>();
 }

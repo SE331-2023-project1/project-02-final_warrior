@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDTO {
+public class AdvisorStudentDTO {
     Integer id;
     Integer studentId;
     String name;
     String surname;
     String imageLink;
     String dept;
-    StudentAdvisorDTO advisor;
+    Advisor advisor;
 }
