@@ -1,6 +1,7 @@
 package se331.proj.rest.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -31,4 +32,8 @@ public class StudentServiceImpl implements StudentService{
         return studentDao.save(student);
     }
 
+    @Override
+    public Page<Student> getStudents(String name, Pageable page) {
+        return studentDao.getStudents(name, page);
+    }
 }
