@@ -16,5 +16,4 @@ public class AdvisorStudentDTO {
     String surname;
     String imageLink;
     String dept;
-    Advisor advisor;
 }
