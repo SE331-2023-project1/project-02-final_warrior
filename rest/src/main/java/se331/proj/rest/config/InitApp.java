@@ -16,6 +16,7 @@ import se331.proj.rest.security.user.Role;
 import se331.proj.rest.security.user.User;
 import se331.proj.rest.security.user.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -84,7 +85,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .name("Thaipat2")
             .surname("Sukhumpraisan2")
             .dept("CAMT2")
-            .imageLink("https://i.redd.it/jn8p6oejm0ub1.jpg")
+            .imageLink(new ArrayList<String>())
             .build());
 
         advisor1 = advisorRepository.save(Advisor.builder()
@@ -93,11 +94,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .surname("Doe")
             .dept("CAMT")
             .position("Lecturer")
-            .imageLink("https://i.redd.it/qjfd7hi1w8ub1.jpg")
+            .imageLink(new ArrayList<String>())
             .build());
 
 
         student1.setAdvisor(advisor1);
+        student1.getImageLink().add("https://i.redd.it/jn8p6oejm0ub1.jpg");
         advisor1.getStudents().add(student1);
+        advisor1.getImageLink().add("https://i.redd.it/qjfd7hi1w8ub1.jpg");
     }
 }
