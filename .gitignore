@@ -1,2 +1,3 @@
 ﻿rest/target
 .vscode/settings.json
+rest/src/main/resources/auth.json
