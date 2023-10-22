@@ -3,6 +3,7 @@ package se331.proj.rest.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,8 @@ public class Advisor {
     Integer advisorId;
     String name;
     String surname;
-    String imageLink;
+    @ElementCollection
+    List<String> imageLink;
     String dept;
     String position;
     @OneToMany

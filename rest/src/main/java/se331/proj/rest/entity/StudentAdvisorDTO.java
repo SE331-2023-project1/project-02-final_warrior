@@ -1,5 +1,8 @@
 package se331.proj.rest.entity;
 
+import java.util.List;
+
+import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +17,8 @@ public class StudentAdvisorDTO {
     Integer advisorId;
     String name;
     String surname;
-    String imageLink;
+    @ElementCollection
+    List<String> imageLink;
     String dept;
     String position;
 }
