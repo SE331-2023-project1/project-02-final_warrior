@@ -6,11 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +20,7 @@ public class StudentController {
     final StudentService studentService;
     
     @GetMapping("students")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getStudentLists(@RequestParam(value = "_limit", required = false) Integer perPage,
         @RequestParam(value = "_page", required = false) Integer page,
         @RequestParam(value = "_name", required = false) String name) {
@@ -43,6 +40,7 @@ public class StudentController {
     }
 
     @GetMapping("students/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
         Student output = studentService.getStudent(id);
         if (output != null) {
