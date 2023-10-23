@@ -22,11 +22,14 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.proj.rest.entity.Advisor;
+import se331.proj.rest.entity.Student;
 //import se331.proj.rest.entity.Organizer;
 import se331.proj.rest.security.token.Token;
 
@@ -59,7 +62,11 @@ public class User implements UserDetails {
 //  Organizer organizer;
 
   @OneToMany(mappedBy = "user")
-  private List<Token> tokens;
+  private List<Token> tokens; 
+  @OneToOne(mappedBy = "user")
+  Advisor advisor;
+  @OneToOne(mappedBy = "user")
+  Student student;
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
