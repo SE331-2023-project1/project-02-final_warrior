@@ -9,11 +9,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import se331.proj.rest.security.user.User;
 
 @Data
 @Builder
@@ -35,4 +37,6 @@ public class Advisor {
     @OneToMany
     @Builder.Default
     List<Student> students = new ArrayList<>();
+    @OneToOne
+    User user;
 }
