@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.proj.rest.security.user.Role;
 
 @Data
 @Builder
@@ -24,4 +25,7 @@ public class AdvisorDTO {
     String position;
     @Builder.Default
     List<AdvisorStudentDTO> students = new ArrayList<>();
+
+    String username;
+    List<Role> roles = new ArrayList<>();
 }
