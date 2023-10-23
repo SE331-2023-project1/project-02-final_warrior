@@ -15,16 +15,13 @@ import se331.proj.rest.security.user.Role;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdvisorDTO {
-    Integer id;
-    Integer advisorId;
+    Long id;
+    String username;
     String name;
     String surname;
-    @ElementCollection
-    List<String> imageLink;
+    List<String> images;
     String dept;
     String position;
-    @Builder.Default
-    List<AdvisorStudentDTO> students = new ArrayList<>();
-    String username;
+    List<AdvisorStudentDTO> ownStudent = new ArrayList<>();
     List<Role> roles = new ArrayList<>();
 }

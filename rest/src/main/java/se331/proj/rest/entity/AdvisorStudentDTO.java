@@ -13,11 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdvisorStudentDTO {
-    Integer id;
-    Integer studentId;
+    Long id;
     String name;
     String surname;
-    @ElementCollection
-    List<String> imageLink;
-    String dept;
 }

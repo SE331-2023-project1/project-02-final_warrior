@@ -23,6 +23,7 @@ public class AuthenticationController {
     return ResponseEntity.ok(service.register(request));
   }
   @PostMapping("advisor/register")
+  @CrossOrigin(origins = "http://localhost:3000")
   public ResponseEntity<AuthenticationResponse> advisorRegister(
           @RequestBody RegisterRequest request
   ) {

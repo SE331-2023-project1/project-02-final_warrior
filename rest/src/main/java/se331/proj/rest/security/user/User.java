@@ -5,16 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import se331.proj.rest.entity.Advisor;
 import se331.proj.rest.entity.Student;
+import se331.proj.rest.entity.Advisor;
 import se331.proj.rest.security.token.Token;
+import se331.proj.rest.security.user.Role;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,6 +41,9 @@ public class User implements UserDetails {
   @ElementCollection
   private List<String> images;
   private String dept;
+  private String position;
+  @ElementCollection
+  private List<String> files;
 
   @Enumerated(EnumType.STRING)
   @ElementCollection
@@ -55,6 +57,9 @@ public class User implements UserDetails {
   Advisor advisor;
   @OneToOne(mappedBy = "user")
   Student student;
+
+
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());

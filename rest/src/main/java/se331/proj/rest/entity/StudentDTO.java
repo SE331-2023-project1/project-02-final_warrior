@@ -16,14 +16,12 @@ import se331.proj.rest.security.user.User;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentDTO {
-    Integer id;
-    Integer studentId;
+    Long id;
+    String username;
     String name;
     String surname;
-    @ElementCollection
-    List<String> imageLink;
+    List<String> images;
     String dept;
     StudentAdvisorDTO advisor;
     List<Role> roles = new ArrayList<>();
-    User user;
 }

@@ -17,6 +17,7 @@ import se331.proj.rest.security.user.User;
 import se331.proj.rest.security.user.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -78,30 +79,36 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        userRepository.save(user1);
 //        userRepository.save(user2);
 //        userRepository.save(user3);
+        User userT1 = new User();
+        userT1.setUsername("KK");
+        userT1.setPassword(encoder.encode("KK"));
+        userT1.setFirstname("Kong");
+        userT1.setLastname("Passakorn");
+        userT1.setRoles(List.of(Role.ROLE_ADVISOR));
+        userT1.setDept("Software Engineer");
+        userT1.setPosition("PhD");
+        userT1.setImages(Collections.singletonList("https://shorturl.at/qzH69"));
+        userRepository.save(userT1);
 
-        Student student1;
-        Advisor advisor1;
-        student1 = studentRepository.save(Student.builder()
-            .studentId(642115025)
-            .name("Thaipat")
-            .surname("Sukhumpraisan")
-            .dept("CAMT")
-            .imageLink(new ArrayList<String>())
-            .build());
+        Advisor teacher1 = new Advisor();
+        teacher1.setUser(userT1);
+        advisorRepository.save(teacher1);
 
-        advisor1 = advisorRepository.save(Advisor.builder()
-            .advisorId(1234)
-            .name("John")
-            .surname("Doe")
-            .dept("CAMT")
-            .position("Lecturer")
-            .imageLink(new ArrayList<String>())
-            .build());
+        User userS1 = new User();
+        userS1.setUsername("642115020");
+        userS1.setPassword(encoder.encode("642115020"));
+        userS1.setFirstname("Thiwakon");
+        userS1.setLastname("Sakunchao");
+        userS1.setRoles(List.of(Role.ROLE_STUDENT));
+        userS1.setDept("Software Engineer");
+        userS1.setImages(Collections.singletonList("https://rebrand.ly/xz81uz9"));
+        userRepository.save(userS1);
+
+        Student student1 = new Student();
+        student1.setUser(userS1);
+        student1.setAdvisor(teacher1);
+        studentRepository.save(student1);
 
 
-        student1.setAdvisor(advisor1);
-        student1.getImageLink().add("https://i.redd.it/jn8p6oejm0ub1.jpg");
-        advisor1.getStudents().add(student1);
-        advisor1.getImageLink().add("https://i.redd.it/qjfd7hi1w8ub1.jpg");
     }
 }

@@ -16,6 +16,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 //import se331.proj.rest.repository.OrganizerRepository;
+import se331.proj.rest.entity.Advisor;
+import se331.proj.rest.entity.Student;
+import se331.proj.rest.repository.AdvisorRepository;
+import se331.proj.rest.repository.StudentRepository;
 import se331.proj.rest.security.config.JwtService;
 import se331.proj.rest.security.token.Token;
 import se331.proj.rest.security.token.TokenRepository;
@@ -32,6 +36,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    final StudentRepository studentRepository;
+    final AdvisorRepository advisorRepository;
 //    final OrganizerRepository organizerRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
@@ -44,6 +50,9 @@ public class AuthenticationService {
                 .roles(List.of(Role.ROLE_STUDENT))
                 .build();
         var savedUser = repository.save(user);
+        Student student1 = new Student();
+        student1.setUser(user);
+        studentRepository.save(student1);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         List<Role> userRoles = user.getRoles();
@@ -65,6 +74,9 @@ public class AuthenticationService {
                 .roles(List.of(Role.ROLE_ADVISOR))
                 .build();
         var savedUser = repository.save(advisor);
+        Advisor teacher1 = new Advisor();
+        teacher1.setUser(advisor);
+        advisorRepository.save(teacher1);
         var jwtToken = jwtService.generateToken(advisor);
         var refreshToken = jwtService.generateRefreshToken(advisor);
         saveUserToken(savedUser, jwtToken);

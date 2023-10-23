@@ -23,14 +23,13 @@ import se331.proj.rest.security.user.User;
 @AllArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-    Integer id;
-    Integer studentId;
+    Long id;
     String name;
     String surname;
     @ElementCollection
-    List<String> imageLink;
+    List<String> images;
     String dept;
     @ManyToOne
     Advisor advisor;

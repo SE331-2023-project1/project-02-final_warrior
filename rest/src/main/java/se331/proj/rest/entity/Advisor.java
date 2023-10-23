@@ -24,19 +24,18 @@ import se331.proj.rest.security.user.User;
 @AllArgsConstructor
 public class Advisor {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-    Integer id;
-    Integer advisorId;
+    Long id;
     String name;
     String surname;
     @ElementCollection
-    List<String> imageLink;
-    String dept;
+    List<String> images;
+    String department;
     String position;
-    @OneToMany
+    @OneToMany(mappedBy = "advisor")
     @Builder.Default
-    List<Student> students = new ArrayList<>();
+    List<Student> ownStudent = new ArrayList<>();
     @OneToOne
     User user;
 }

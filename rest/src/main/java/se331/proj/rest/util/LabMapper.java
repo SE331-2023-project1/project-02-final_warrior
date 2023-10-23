@@ -14,12 +14,24 @@ import se331.proj.rest.entity.StudentDTO;
 @Mapper
 public interface LabMapper {
     LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
-    @Mapping(source = "advisor", target = "advisor")
-    @Mapping(source = "user.roles", target = "roles")
-    StudentDTO getStudentDTO(Student student);
     List<StudentDTO> getStudentDTO(List<Student> students);
-    @Mapping(source = "students", target = "students")
+    @Mapping(source = "ownStudent", target = "ownStudent")
+    @Mapping(source = "user.username", target = "username")
+    @Mapping(source = "user.firstname", target = "name")
+    @Mapping(source = "user.lastname", target = "surname")
     @Mapping(source = "user.roles", target = "roles")
+    @Mapping(source = "user.images", target = "images")
+    @Mapping(source = "user.dept", target = "dept")
+    @Mapping(source = "user.position", target = "position")
     AdvisorDTO getAdvisorDTO(Advisor advisor);
+    List<AdvisorDTO> getTeacherDTO(List<Advisor> teachers);
+    @Mapping(source = "advisor", target = "advisor")
+    @Mapping(source = "user.username", target = "username")
+    @Mapping(source = "user.firstname", target = "name")
+    @Mapping(source = "user.lastname", target = "surname")
+    @Mapping(source = "user.roles", target = "roles")
+    @Mapping(source = "user.images", target = "images")
+    @Mapping(source = "user.dept", target = "dept")
+    StudentDTO getStudentDTO(Student student);
     List<AdvisorDTO> getAdvisorDTO(List<Advisor> advisors);
 }
