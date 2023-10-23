@@ -1,15 +1,20 @@
 package se331.proj.rest.security.auth;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
+import java.io.IOException;
+import java.util.List;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 //import se331.proj.rest.repository.OrganizerRepository;
 import se331.proj.rest.security.config.JwtService;
 import se331.proj.rest.security.token.Token;
@@ -18,11 +23,6 @@ import se331.proj.rest.security.token.TokenType;
 import se331.proj.rest.security.user.Role;
 import se331.proj.rest.security.user.User;
 import se331.proj.rest.security.user.UserRepository;
-import se331.proj.rest.util.LabMapper;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
