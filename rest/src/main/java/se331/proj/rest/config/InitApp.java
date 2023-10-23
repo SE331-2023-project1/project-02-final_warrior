@@ -40,53 +40,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build());
 
-        userRepository.save(User.builder()
-                .username("st1")
-                .password(encoder.encode("123"))
-                .firstname("admin")
-                .lastname("admin")
-                .email("admin@admin.com")
-                .roles(List.of(Role.ROLE_STUDENT))
-                .build());
 
-                
-//        User user1, user2, user3;
-//        user1 = User.builder()
-//                .username("admin")
-//                .password(encoder.encode("admin"))
-//                .firstname("admin")
-//                .lastname("admin")
-//                .email("admin@admin.com")
-//                .roles(List.of(Role.ROLE_ADMIN))
-//                .build();
-//        user2 = User.builder()
-//                .username("teacher")
-//                .password(encoder.encode("teacher"))
-//                .firstname("teacher")
-//                .lastname("teacher")
-//                .email("enabled@user.com")
-//                .roles(List.of(Role.ROLE_ADVISOR))
-//                .build();
-//        user3 = User.builder()
-//                .username("student")
-//                .password(encoder.encode("student"))
-//                .firstname("student")
-//                .lastname("student")
-//                .email("disableUser@user.com")
-//                .roles(List.of(Role.ROLE_ADVISOR))
-//                .build();
-//
-//        userRepository.save(user1);
-//        userRepository.save(user2);
-//        userRepository.save(user3);
         User userT1 = new User();
-        userT1.setUsername("KK");
-        userT1.setPassword(encoder.encode("KK"));
-        userT1.setFirstname("Kong");
-        userT1.setLastname("Passakorn");
+        userT1.setUsername("adv1");
+        userT1.setPassword(encoder.encode("123"));
+        userT1.setFirstname("Thaiphat");
+        userT1.setLastname("kub");
         userT1.setRoles(List.of(Role.ROLE_ADVISOR));
-        userT1.setDept("Software Engineer");
-        userT1.setPosition("PhD");
+        userT1.setDept("Lecture");
+        userT1.setPosition("aa");
         userT1.setImages(Collections.singletonList("https://shorturl.at/qzH69"));
         userRepository.save(userT1);
 
@@ -95,10 +57,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         advisorRepository.save(teacher1);
 
         User userS1 = new User();
-        userS1.setUsername("642115020");
-        userS1.setPassword(encoder.encode("642115020"));
-        userS1.setFirstname("Thiwakon");
-        userS1.setLastname("Sakunchao");
+        userS1.setUsername("stu1");
+        userS1.setPassword(encoder.encode("123"));
+        userS1.setFirstname("Lotus");
+        userS1.setLastname("Khum");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userS1.setDept("Software Engineer");
         userS1.setImages(Collections.singletonList("https://rebrand.ly/xz81uz9"));
