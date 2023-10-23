@@ -52,7 +52,7 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   @ElementCollection
   @Builder.Default
-  @Basic(fetch = FetchType.EAGER)
+  @LazyCollection(LazyCollectionOption.FALSE)
   private List<Role> roles = new ArrayList<>();
 
 //  @OneToOne(mappedBy = "user")
