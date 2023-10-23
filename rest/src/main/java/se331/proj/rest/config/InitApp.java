@@ -48,6 +48,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .roles(List.of(Role.ROLE_STUDENT))
                 .build());
 
+                
 //        User user1, user2, user3;
 //        user1 = User.builder()
 //                .username("admin")
@@ -82,9 +83,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         Advisor advisor1;
         student1 = studentRepository.save(Student.builder()
             .studentId(642115025)
-            .name("Thaipat2")
-            .surname("Sukhumpraisan2")
-            .dept("CAMT2")
+            .name("Thaipat")
+            .surname("Sukhumpraisan")
+            .dept("CAMT")
             .imageLink(new ArrayList<String>())
             .build());
 

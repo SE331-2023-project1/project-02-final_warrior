@@ -25,7 +25,6 @@ public class AdvisorDTO {
     String position;
     @Builder.Default
     List<AdvisorStudentDTO> students = new ArrayList<>();
-
     String username;
     List<Role> roles = new ArrayList<>();
 }
