@@ -58,6 +58,9 @@ public class User implements UserDetails {
   @Basic(fetch = FetchType.EAGER)
   private List<Role> roles = new ArrayList<>();
 
+//  @OneToOne(mappedBy = "user")
+//  Organizer organizer;
+
   @OneToMany(mappedBy = "user")
   private List<Token> tokens; 
   @OneToOne(mappedBy = "user")
