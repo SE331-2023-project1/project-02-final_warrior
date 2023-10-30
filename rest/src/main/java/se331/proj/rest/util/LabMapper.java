@@ -8,6 +8,8 @@ import org.mapstruct.factory.Mappers;
 
 import se331.proj.rest.entity.Advisor;
 import se331.proj.rest.entity.AdvisorDTO;
+import se331.proj.rest.entity.Announcement;
+import se331.proj.rest.entity.AnnouncementDTO;
 import se331.proj.rest.entity.Student;
 import se331.proj.rest.entity.StudentDTO;
 
@@ -34,4 +36,6 @@ public interface LabMapper {
     @Mapping(source = "user.dept", target = "dept")
     StudentDTO getStudentDTO(Student student);
     List<AdvisorDTO> getAdvisorDTO(List<Advisor> advisors);
+    AnnouncementDTO getAnnouncementDTO(Announcement announcement);
+    List<AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcement);
 }
