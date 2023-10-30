@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import se331.proj.rest.entity.Student;
 import se331.proj.rest.entity.Advisor;
 import se331.proj.rest.security.token.Token;
-import se331.proj.rest.security.user.Role;
 
 import java.util.ArrayList;
 import java.util.Collection;
