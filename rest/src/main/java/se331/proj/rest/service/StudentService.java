@@ -9,6 +9,8 @@ public interface StudentService {
     Integer getStudentSize();
     Page<Student> getStudents(Integer pageSize, Integer page);
     Page<Student> getStudents(String name, Pageable page);
-    Student getStudent(Integer id);
+    Student getStudent(Long id);
+
+    Student updateDetail(Student student);
     Student save(Student student);
 }

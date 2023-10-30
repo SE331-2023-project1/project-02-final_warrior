@@ -41,7 +41,7 @@ public class StudentController {
 
     @GetMapping("students/{id}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> getStudent(@PathVariable("id") Long id) {
         Student output = studentService.getStudent(id);
         if (output != null) {
             return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
@@ -54,5 +54,12 @@ public class StudentController {
     public ResponseEntity<?> addStudent(@RequestBody Student student) {
         Student output = studentService.save(student);
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
+    }
+
+    @PutMapping("updatestudents")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<?> updateStudentDetails(@RequestBody Student student)
+    {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.updateDetail(student)));
     }
 }

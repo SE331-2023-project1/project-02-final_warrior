@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import se331.proj.rest.entity.Student;
 
-public interface StudentRepository extends JpaRepository<Student,Integer>{
+public interface StudentRepository extends JpaRepository<Student,Long>{
     List<Student> findAll();
     Page<Student> findByNameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(String name, String surname, Pageable page);
 }
