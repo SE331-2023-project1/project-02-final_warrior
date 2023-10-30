@@ -35,17 +35,18 @@ public class AdvisorServiceImpl implements AdvisorService{
 
     @Override
     public Advisor updateDetail(Advisor advisor) {
-        Advisor updateTeacher = advisorDao.getAdvisor(advisor.getId());
-        if (updateTeacher != null) {
+        Advisor updateAdvisor = advisorDao.getAdvisor(advisor.getId());
+        if (updateAdvisor != null) {
 
-            updateTeacher.getUser().setFirstname(advisor.getName());
-            updateTeacher.getUser().setLastname(advisor.getSurname());
+            updateAdvisor.getUser().setFirstname(advisor.getName());
+            updateAdvisor.getUser().setLastname(advisor.getSurname());
+            updateAdvisor.getUser().setDept(advisor.getDept());
 //            updateTeacher.getUser().setDepartment(teacher.getDepartment());
 
-            advisorDao.save(updateTeacher);
+            advisorDao.save(updateAdvisor);
 
-            userDao.save(updateTeacher.getUser());
-            return updateTeacher;
+            userDao.save(updateAdvisor.getUser());
+            return updateAdvisor;
         }
         return null;
     }

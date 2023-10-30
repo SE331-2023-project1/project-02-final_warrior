@@ -34,6 +34,7 @@ public class AdvisorController {
     }
 
     @PutMapping("updateadvisor")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> updateAdvisorDetails(@RequestBody Advisor advisor)
     {
         return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(advisorService.updateDetail(advisor)));

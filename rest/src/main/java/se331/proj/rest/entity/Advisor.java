@@ -31,7 +31,7 @@ public class Advisor {
     String surname;
     @ElementCollection
     List<String> images;
-    String department;
+    String dept;
     String position;
     @OneToMany(mappedBy = "advisor")
     @Builder.Default
