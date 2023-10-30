@@ -33,10 +33,16 @@ public class AdvisorController {
             return new ResponseEntity<>(LabMapper.INSTANCE.getAdvisorDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 
+    @PutMapping("updateadvisor")
+    public ResponseEntity<?> updateAdvisorDetails(@RequestBody Advisor advisor)
+    {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(advisorService.updateDetail(advisor)));
+    }
+
     
     @GetMapping("advisors/{id}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<?> getAdvisor(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> getAdvisor(@PathVariable("id") Long id) {
         Advisor output = advisorService.getAdvisor(id);
         if (output != null) {
             return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(output));

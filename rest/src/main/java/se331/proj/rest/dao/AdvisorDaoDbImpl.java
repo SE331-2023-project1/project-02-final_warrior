@@ -25,10 +25,14 @@ public class AdvisorDaoDbImpl implements AdvisorDao{
         return advisorRepository.findAll(PageRequest.of(page - 1, perPage));
     }
 
-    @Override
-    public Advisor getAdvisor(Integer id) {
-        return advisorRepository.findById(id).orElse(null);
-    }
+//    @Override
+//    public Advisor getAdvisor(Long id) {
+//        return advisorRepository.findById(id).orElse(null);
+//    }
+@Override
+public Advisor getAdvisor(Long id) {
+    return advisorRepository.findById(id).orElse(null);
+}
 
     @Override
     public Advisor save(Advisor advisor) {
