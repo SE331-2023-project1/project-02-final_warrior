@@ -13,7 +13,5 @@ public class AnnouncementDTO {
    Long id;
    String message;
    String file;
-   String name;
-   String surname;
    AdvisorStudentDTO advisor;
 }

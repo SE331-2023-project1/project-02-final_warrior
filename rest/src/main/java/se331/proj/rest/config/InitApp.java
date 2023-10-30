@@ -73,8 +73,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         student1.setAdvisor(advisor1);
         studentRepository.save(student1);
 
-        Announcement announcement = Announcement.builder().id(1L).message("Hello, students.")
-                                .file("https://media.discordapp.net/attachments/879626635949772830/1165361663881523290/Ichihime-2.png?ex=654692a0&is=65341da0&hm=2113c8160e7e8e2dfd5505fb8e5004bb0391265fcea9dc5ca7753073ebc05377&=&width=215&height=215")
+        Announcement announcement = Announcement.builder().id(1L).message("Good morning")
+                                .file("https://i.redd.it/qx0md16altwb1.jpg")
                                 .advisor(advisor1)
                                 .build();
         announcementRepository.save(announcement);

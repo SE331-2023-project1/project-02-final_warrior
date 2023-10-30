@@ -21,8 +21,6 @@ public class Announcement {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @EqualsAndHashCode.Exclude
    Long id;
-   String name;
-   String surname;
    String message;
    String file;
    @ManyToOne

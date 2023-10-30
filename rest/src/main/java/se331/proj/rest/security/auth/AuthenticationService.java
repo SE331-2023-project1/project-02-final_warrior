@@ -61,6 +61,7 @@ public class AuthenticationService {
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .userRole(userRoles)
+                .studentid(student1.getId())
                 .build();
     }
 
@@ -74,9 +75,9 @@ public class AuthenticationService {
                 .roles(List.of(Role.ROLE_ADVISOR))
                 .build();
         var savedUser = repository.save(advisor);
-        Advisor teacher1 = new Advisor();
-        teacher1.setUser(advisor);
-        advisorRepository.save(teacher1);
+        Advisor advisor1 = new Advisor();
+        advisor1.setUser(advisor);
+        advisorRepository.save(advisor1);
         var jwtToken = jwtService.generateToken(advisor);
         var refreshToken = jwtService.generateRefreshToken(advisor);
         saveUserToken(savedUser, jwtToken);
@@ -84,6 +85,7 @@ public class AuthenticationService {
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .userRole(advisor.getRoles())
+                .advisorid(advisor1.getId())
                 .build();
     }
 
@@ -102,7 +104,16 @@ public class AuthenticationService {
 
         // Get the user's roles and convert them to a comma-separated string
         List<Role> userRoles = user.getRoles();
+        Long advisorId = null;
+        Long studentId = null;
 
+        if(user.getAdvisor() != null){
+            advisorId = user.getAdvisor().getId();
+        }
+        if(user.getStudent() != null){
+            studentId = user.getStudent().getId();
+            advisorId = user.getStudent().getAdvisor().getId();
+        }
 //    revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
@@ -110,6 +121,8 @@ public class AuthenticationService {
                 .refreshToken(refreshToken)
 //                .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
                 .userRole(userRoles)
+                .studentid(studentId)
+                .advisorid(advisorId)
                 .build();
     }
 
