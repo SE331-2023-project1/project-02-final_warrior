@@ -138,5 +138,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                 .advisor(advisor1)
                                 .build();
         announcementRepository.save(announcement);
+
+        Announcement announcement2 = Announcement.builder().id(2L).message("Hi this is my cat")
+                                .file("https://i.redd.it/9zbizmgukcxb1.jpg")
+                                .advisor(advisor2)
+                                .build();
+        announcementRepository.save(announcement2);
     }
 }
