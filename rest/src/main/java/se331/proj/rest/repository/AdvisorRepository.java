@@ -8,4 +8,6 @@ import se331.proj.rest.entity.Advisor;
 
 public interface AdvisorRepository extends JpaRepository<Advisor,Long> {
     List<Advisor> findAll();
+
+
 }
